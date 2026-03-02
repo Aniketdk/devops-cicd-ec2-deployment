@@ -1,135 +1,79 @@
-🚀 DevOps CI/CD Pipeline with Docker & AWS EC2
+# 🚀 CI/CD Pipeline Deployment using Docker & AWS EC2
 
-This project demonstrates an end-to-end CI/CD pipeline using GitHub Actions, Docker, DockerHub, and AWS EC2. 
-The application is automatically built, pushed to DockerHub, and deployed to an EC2 instance on every push to the main branch.
+## 📌 Project Overview
 
-📌 Project Overview
+This project implements a complete end-to-end CI/CD pipeline that automatically builds, pushes, and deploys a Dockerized application to an AWS EC2 instance using GitHub Actions.
 
-This project automates:
-✔ Building Docker image
+Every push to the `main` branch triggers an automated workflow that deploys the latest version of the application to production without manual intervention.
 
-✔ Pushing image to DockerHub
+---
 
-✔ Connecting to EC2 via SSH
+## 🏗️ Architecture Flow
 
-✔ Pulling latest Docker image
+Developer Push → GitHub → GitHub Actions  
+→ Build Docker Image  
+→ Push to DockerHub  
+→ SSH into EC2  
+→ Pull Latest Image  
+→ Restart Container  
+→ Application Live
 
-✔ Running container automatically
+---
 
-✔ The application becomes live at: http://43.205.237.47:3000
+## 🛠️ Tech Stack
 
+- Git & GitHub
+- GitHub Actions (CI/CD)
+- Docker
+- DockerHub
+- AWS EC2 (Linux)
+- WSL (Local Development)
 
+---
 
-🛠️ Tech Stack
-Git & GitHub
+## ⚙️ Automated Workflow
 
-GitHub Actions (CI/CD)
+On every code push:
 
-Docker
+1. Docker image is built.
+2. Image is pushed to DockerHub.
+3. GitHub Actions connects to EC2 via SSH.
+4. Existing container is stopped and removed.
+5. Latest image is pulled.
+6. New container is deployed automatically.
 
-DockerHub
+---
 
-AWS EC2 (Linux)
+## 🔐 Secure Configuration
 
-WSL (for local development)
+GitHub Secrets Used:
+- DOCKER_USERNAME
+- DOCKER_PASSWORD (Access Token)
+- HOST (EC2 Public IP)
+- USERNAME (ubuntu / ec2-user)
+- KEY (Private SSH Key)
 
+Security Group Configuration:
+- Port 22 (SSH)
+- Port 3000 (Application)
 
+---
 
-🔄 CI/CD Workflow Architecture
-Developer → GitHub Push → GitHub Actions
-            ↓
-      Build Docker Image
-            ↓
-      Push to DockerHub
-            ↓
-      SSH into EC2
-            ↓
-   Pull Latest Docker Image
-            ↓
-      Run Docker Container
+## 🌐 Live Deployment
 
-      
+Application accessible at:
 
-📂 Project Structure
-.
-├── .github/workflows/
-│   └── ci-cd.yml
-├── Dockerfile
-├── package.json
-├── app.js (or main application file)
-└── README.md
+http://43.205.237.47:3000
+---
 
+## 📈 DevOps Concepts Demonstrated
 
+- CI/CD Automation
+- Docker Containerization
+- Cloud Deployment (AWS EC2)
+- Secure Credential Management
+- SSH-based Remote Deployment
+- Zero Manual Production Deployment
 
-⚙️ GitHub Secrets Used
-The following secrets are configured in GitHub:
+---
 
-Secret Name              	Description
-DOCKER_USERNAME	      DockerHub username
-DOCKER_PASSWORD	      DockerHub access token
-HOST	                EC2 Public IP
-USERNAME	            EC2 username (ubuntu / ec2-user)
-KEY	                  Private SSH key
-
-
-
-🐳 Docker Commands Used
-Build image locally:
-docker build -t aniketdk/devops-app:latest .
-
-Push image:
-docker push aniketdk/devops-app:latest
-
-Run container:
-docker run -d -p 3000:3000 --name cicd-container aniketdk/devops-app:latest
-
-
-
-🖥️ EC2 Setup
-EC2 Instance (Ubuntu)
-
-Security Group allowing:
-
-Port 22 (SSH)
-
-Port 3000 (Application)
-
-Docker installed on EC2
-
-
-
-🔐 Security Configuration
-SSH key-based authentication
-
-DockerHub access token used instead of password
-
-EC2 Security Group configured properly
-
-
-
-📈 Features
-✔ Automated CI/CD pipeline
-
-✔ Zero manual deployment
-
-✔ Dockerized application
-
-✔ Cloud deployment using AWS
-
-✔ Production-style workflow
-
-
-
-🚀 Future Improvements
-
-Add Nginx reverse proxy.
-
-Add HTTPS using Let's Encrypt.
-
-Use Docker Compose.
-
-Deploy using Kubernetes (EKS)
-
-Add monitoring (Prometheus & Grafana)
-
-Infrastructure as Code using Terraform.
