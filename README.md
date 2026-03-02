@@ -18,6 +18,8 @@ This project automates:
 
 ✔ The application becomes live at: http://43.205.237.47:3000
 
+
+
 🛠️ Tech Stack
 Git & GitHub
 
@@ -30,6 +32,8 @@ DockerHub
 AWS EC2 (Linux)
 
 WSL (for local development)
+
+
 
 🔄 CI/CD Workflow Architecture
 Developer → GitHub Push → GitHub Actions
@@ -44,6 +48,8 @@ Developer → GitHub Push → GitHub Actions
             ↓
       Run Docker Container
 
+      
+
 📂 Project Structure
 .
 ├── .github/workflows/
@@ -52,6 +58,8 @@ Developer → GitHub Push → GitHub Actions
 ├── package.json
 ├── app.js (or main application file)
 └── README.md
+
+
 
 ⚙️ GitHub Secrets Used
 The following secrets are configured in GitHub:
@@ -63,6 +71,8 @@ HOST	                EC2 Public IP
 USERNAME	            EC2 username (ubuntu / ec2-user)
 KEY	                  Private SSH key
 
+
+
 🐳 Docker Commands Used
 Build image locally:
 docker build -t aniketdk/devops-app:latest .
@@ -72,6 +82,8 @@ docker push aniketdk/devops-app:latest
 
 Run container:
 docker run -d -p 3000:3000 --name cicd-container aniketdk/devops-app:latest
+
+
 
 🖥️ EC2 Setup
 EC2 Instance (Ubuntu)
@@ -84,12 +96,16 @@ Port 3000 (Application)
 
 Docker installed on EC2
 
+
+
 🔐 Security Configuration
 SSH key-based authentication
 
 DockerHub access token used instead of password
 
 EC2 Security Group configured properly
+
+
 
 📈 Features
 ✔ Automated CI/CD pipeline
@@ -101,6 +117,8 @@ EC2 Security Group configured properly
 ✔ Cloud deployment using AWS
 
 ✔ Production-style workflow
+
+
 
 🚀 Future Improvements
 
