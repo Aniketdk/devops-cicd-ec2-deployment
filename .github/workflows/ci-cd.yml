@@ -35,6 +35,7 @@ jobs:
           script: |
             docker stop cicd-container || true
             docker rm cicd-container || true
-            docker pull your-dockerhub-username/cicd-app:latest
-            docker run -d -p 3000:3000 --name cicd-container your-dockerhub-username/cicd-app:latest
+            docker pull aniketdk/devop-app:latest
+            docker run -d -p 3000:3000 --name cicd-container aniketdk/devop-app:latest
+
 
